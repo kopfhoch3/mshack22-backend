@@ -1,4 +1,4 @@
-package de.kopf3.mshack22backend.persitence.document;
+package de.kopf3.mshack22backend.persistence.document;
 
 import java.time.ZonedDateTime;
 

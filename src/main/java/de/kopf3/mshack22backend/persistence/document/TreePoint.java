@@ -1,7 +1,6 @@
-package de.kopf3.mshack22backend.persitence.document;
+package de.kopf3.mshack22backend.persistence.document;
 
 import java.sql.Timestamp;
-import java.time.ZonedDateTime;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;

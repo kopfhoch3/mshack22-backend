@@ -1,9 +1,7 @@
 package de.kopf3.mshack22backend.api.controller;
 
-import de.kopf3.mshack22backend.persitence.document.ActivityPoint;
-import de.kopf3.mshack22backend.persitence.document.TreePoint;
-import de.kopf3.mshack22backend.persitence.repository.ActivityPointRepository;
-import de.kopf3.mshack22backend.persitence.repository.TreePointRepository;
+import de.kopf3.mshack22backend.persistence.document.TreePoint;
+import de.kopf3.mshack22backend.persistence.repository.TreePointRepository;
 import de.kopf3.mshack22backend.wstos.Tree;
 import de.kopf3.mshack22backend.wstos.TreeWrapper;
 import lombok.RequiredArgsConstructor;

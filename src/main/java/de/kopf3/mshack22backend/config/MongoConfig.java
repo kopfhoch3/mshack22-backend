@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackages = "de.kopf3.mshack22backend.persitence.repository")
+@EnableMongoRepositories(basePackages = "de.kopf3.mshack22backend.persistence.repository")
 public class MongoConfig {
     
 }

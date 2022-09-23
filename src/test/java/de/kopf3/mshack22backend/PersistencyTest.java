@@ -2,10 +2,9 @@ package de.kopf3.mshack22backend;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
-import de.kopf3.mshack22backend.entities.Tree;
-import de.kopf3.mshack22backend.entities.User;
+import de.kopf3.mshack22backend.persistence.document.User;
 import de.kopf3.mshack22backend.repositories.ActivityPointRepository;
-import de.kopf3.mshack22backend.repositories.UserRepository;
+import de.kopf3.mshack22backend.persistence.repository.UserRepository;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
