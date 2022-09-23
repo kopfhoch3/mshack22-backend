@@ -4,7 +4,104 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
-         <changeSet author="Carlo" id="001-baseTables">
-            <createTable tableName="POINTS"/>
-         </changeSet>
+        <changeSet author="Carlo" id="001-baseTables">
+            <createTable tableName="USERS">
+                <column name="ID" type="SERIAL">
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="DEVICE_ID" type="UUID">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="NICKNAME" type="VARCHAR(50)">
+                    <constraints nullable="false"/>
+                </column>
+            </createTable>
+
+            <createTable tableName="POINTS">
+                <column name="ID" type="SERIAL">
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="COORDINATES" type="geometry(Point, 10000)">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="TITLE" type="VARCHAR(50)">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="DESCRIPTION" type="VARCHAR">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="TYPE" type="VARCHAR">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="TIMESTAMP" type="TIMESTAMP WITH TIME ZONE">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="USER_ID" type="INT(4)">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="RESOLVED" type="BOOL" defaultValue="0">
+                    <constraints nullable="false"/>
+                </column>
+            </createTable>
+            <addForeignKeyConstraint
+                    baseTableName="POINTS"
+                    baseColumnNames="USER_ID"
+                    constraintName="FK_POINTS_USER_ID"
+                    referencedTableName="USERS"
+                    referencedColumnNames="ID"/>
+            
+            <createTable tableName="IMAGES">
+                <column name="ID" type="SERIAL">
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="URL" type="VARCHAR">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="POINT_ID" type="INT">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="IS_PRIMARY" type="BOOL" defaultValue="0">
+                    <constraints nullable="false"/>
+                </column>
+            </createTable>
+            <addForeignKeyConstraint
+                    baseTableName="IMAGES"
+                    baseColumnNames="POINT_ID"
+                    constraintName="FK_IMAGES_POINT_ID"
+                    referencedTableName="POINTS"
+                    referencedColumnNames="ID"/>
+            
+            <createTable tableName="ACTIONS">
+                <column name="ID" type="SERIAL">
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="TYPE" type="VARCHAR(50)">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="TIMESTAMP" type="TIMESTAMP WITH TIME ZONE">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="USER_ID" type="INT">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="POINT_ID" type="INT">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="MESSAGE" type="VARCHAR">
+                    <constraints nullable="false"/>
+                </column>
+            </createTable>
+            <addForeignKeyConstraint
+                    baseTableName="ACTIONS"
+                    baseColumnNames="USER_ID"
+                    constraintName="FK_ACTIONS_USER_ID"
+                    referencedTableName="USERS"
+                    referencedColumnNames="ID"/>
+            <addForeignKeyConstraint
+                    baseTableName="ACTIONS"
+                    baseColumnNames="POINT_ID"
+                    constraintName="FK_ACTIONS_POINT_ID"
+                    referencedTableName="POINTS"
+                    referencedColumnNames="ID"/>
+        </changeSet>
  </databaseChangeLog>
