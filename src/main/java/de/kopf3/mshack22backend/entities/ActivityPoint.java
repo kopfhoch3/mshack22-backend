@@ -1,10 +1,9 @@
 package de.kopf3.mshack22backend.entities;
 
-import javax.persistence.*;
-
 import com.vividsolutions.jts.geom.Point;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 
 @Data
@@ -14,6 +13,7 @@ import java.time.ZonedDateTime;
 @DiscriminatorColumn(name = "TYPE", discriminatorType = DiscriminatorType.STRING)
 public class ActivityPoint {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Point coordinates;
@@ -25,8 +25,7 @@ public class ActivityPoint {
     private String title;
 
     private String description;
-    private String type;
-    private ZonedDateTime timeStamp;
+    private ZonedDateTime timestamp;
     
     @ManyToOne
     @JoinColumn(name = "USER_ID")

@@ -21,7 +21,7 @@
                 <column name="ID" type="SERIAL">
                     <constraints primaryKey="true" nullable="false"/>
                 </column>
-                <column name="COORDINATES" type="geometry(Point, 10000)">
+                <column name="COORDINATES" type="geometry(Point, 4326)">
                     <constraints nullable="false"/>
                 </column>
                 <column name="TITLE" type="VARCHAR(50)">
