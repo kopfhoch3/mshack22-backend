@@ -1,6 +1,7 @@
 package de.kopf3.mshack22backend.persistence.document;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
@@ -27,4 +28,7 @@ public class ActivityPoint {
     private String description;
     private ZonedDateTime timestamp;
     private boolean resolved;
+    private List<Action> actions;
+    private List<Image> images;
+    private ObjectId userId;
 }

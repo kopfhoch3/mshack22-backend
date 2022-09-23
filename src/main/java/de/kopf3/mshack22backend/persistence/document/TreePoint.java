@@ -1,6 +1,7 @@
 package de.kopf3.mshack22backend.persistence.document;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
@@ -29,4 +30,7 @@ public class TreePoint {
     private Timestamp timestamp;
     private boolean resolved;
     private String treeFamily;
+    private List<Image> images;
+    private List<Action> actions;
+    private List<GießAction> gießActions;
 }

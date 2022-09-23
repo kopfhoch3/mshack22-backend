@@ -1,16 +1,20 @@
 package de.kopf3.mshack22backend.persistence.document;
 
 import lombok.Data;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 
 @Data
-public class Image {
+public class Action {
     
 
-    private String url;
 
-    
-    private boolean isPrimary;
+    private String message;
+    private List<Image> images;
+    private Timestamp timestamp;
 }
