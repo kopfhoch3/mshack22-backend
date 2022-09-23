@@ -3,7 +3,7 @@ version: '3.1'
 services:
     # https://hub.docker.com/_/postgres
     db:
-        image: postgres
+        image: postgis/postgis
         restart: unless-stopped
         ports:
             - 5432:5432
