@@ -25,8 +25,7 @@ public class ActivityPoint {
     private String title;
 
     private String description;
-    private String type;
-    private ZonedDateTime timeStamp;
+    private ZonedDateTime timestamp;
     
     @ManyToOne
     @JoinColumn(name = "USER_ID")
