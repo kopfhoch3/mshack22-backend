@@ -10,6 +10,8 @@ import java.time.ZonedDateTime;
 @Data
 @Entity
 @Table(name = "POINTS")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "TYPE", discriminatorType = DiscriminatorType.STRING)
 public class ActivityPoint {
     @Id
     private Long id;
