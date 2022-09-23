@@ -1,13 +1,8 @@
-version: '3.1'
+version: "3.1"
 
 services:
-    # https://hub.docker.com/_/postgres
-    db:
-        image: postgis/postgis:12-3.0
-        restart: unless-stopped
-        ports:
-            - 5432:5432
-        environment:
-            POSTGRES_USER: kopf3
-            POSTGRES_PASSWORD: mshack
-            POSTGRES_DB: nachhaltigkeit
+  # https://hub.docker.com/_/postgres
+  db:
+    image: mongo:5
+    ports:
+      - "27017:27017"
