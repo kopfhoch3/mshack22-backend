@@ -14,6 +14,7 @@ import java.time.ZonedDateTime;
 @DiscriminatorColumn(name = "TYPE", discriminatorType = DiscriminatorType.STRING)
 public class ActivityPoint {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Point coordinates;
