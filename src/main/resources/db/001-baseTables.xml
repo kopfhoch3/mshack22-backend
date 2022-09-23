@@ -103,5 +103,21 @@
                     constraintName="FK_ACTIONS_POINT_ID"
                     referencedTableName="POINTS"
                     referencedColumnNames="ID"/>
+            
+            <createTable tableName="TREES">
+                <column name="ID" type="INT">
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="STR_KEY" type="VARCHAR(5)">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="TREE_TYPE" type="VARCHAR"/>
+            </createTable>
+            <addForeignKeyConstraint
+                    baseTableName="TREES"
+                    baseColumnNames="ID"
+                    constraintName="FK_TREES_POINT_ID"
+                    referencedTableName="POINTS"
+                    referencedColumnNames="ID"/>
         </changeSet>
  </databaseChangeLog>
