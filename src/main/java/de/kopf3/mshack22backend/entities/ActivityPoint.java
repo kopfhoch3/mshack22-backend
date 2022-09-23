@@ -1,10 +1,9 @@
 package de.kopf3.mshack22backend.entities;
 
-import javax.persistence.*;
-
 import com.vividsolutions.jts.geom.Point;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 
 @Data
