@@ -5,6 +5,9 @@ services:
     db:
         image: postgres
         restart: unless-stopped
+        ports:
+            - 5432:5432
         environment:
             POSTGRES_USER: kopf3
             POSTGRES_PASSWORD: mshack
+            POSTGRES_DB: nachhaltigkeit

@@ -72,6 +72,17 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<configuration>
+					<changeLogFile>db.changelog-root.xml</changeLogFile>
+					<url>jdbc:postgresql://localhost:5432/nachhaltigkeit</url>
+					<username>kopf3</username>
+					<password>mshack</password>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
