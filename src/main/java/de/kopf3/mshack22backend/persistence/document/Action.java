@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 
@@ -16,5 +17,6 @@ public class Action {
 
     private String message;
     private List<Image> images;
-    private Timestamp timestamp;
+    private Date timestamp;
+    private String type;
 }

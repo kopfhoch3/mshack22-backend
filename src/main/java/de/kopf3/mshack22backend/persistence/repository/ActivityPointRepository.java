@@ -5,5 +5,11 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import de.kopf3.mshack22backend.persistence.document.ActivityPoint;
 
-public interface ActivityPointRepository extends MongoRepository<ActivityPoint, ObjectId> {
+import java.util.List;
+
+public interface ActivityPointRepository extends MongoRepository<ActivityPoint, ObjectId>, SpatialActivityPointRepository {
+
+
+    List<ActivityPoint> findByUserId(ObjectId userId);
+    List<ActivityPoint> findByTypeIn(List<String> types);
 }

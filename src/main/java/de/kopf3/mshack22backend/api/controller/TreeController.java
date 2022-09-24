@@ -1,7 +1,5 @@
 package de.kopf3.mshack22backend.api.controller;
 
-import de.kopf3.mshack22backend.api.to.TreeTo;
-import de.kopf3.mshack22backend.api.to.mapper.TreeToMapper;
 import de.kopf3.mshack22backend.persistence.document.TreePoint;
 import de.kopf3.mshack22backend.persistence.repository.TreePointRepository;
 import de.kopf3.mshack22backend.wstos.Tree;
@@ -18,12 +16,12 @@ import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("tree")
+@RequestMapping("trees")
+@CrossOrigin("*")
 @RequiredArgsConstructor
 public class TreeController {
 
     private final TreePointRepository treePointRepository;
-    private final TreeToMapper mapper;
 
     @PostMapping("treeimport")
     public List<TreePoint> importGeoJson(@RequestBody TreeWrapper treeWrapper) {
@@ -57,28 +55,16 @@ public class TreeController {
     }
 
     @GetMapping("all")
-    @CrossOrigin("*")
-    public List<TreeTo> getAllTrees() {
-        final var trees = this.treePointRepository.findAll()
-            .stream()
-            .map(mapper::from)
-            .toList();
-        return trees;
+    public List<TreePoint> getAllTrees() {
+        return this.treePointRepository.findAll();
     }
 
 
-    @PostMapping
-    public TreePoint create(@RequestBody TreePoint treePoint){
-        return null;
-    }
 
     @PutMapping
     public TreePoint update(@RequestBody TreePoint treePoint){
-        return null;
+        return treePointRepository.save(treePoint);
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody TreePoint treePoint){
-        return;
-    }
+
 }
