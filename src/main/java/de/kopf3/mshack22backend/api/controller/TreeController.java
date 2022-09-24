@@ -27,7 +27,7 @@ public class TreeController {
     public List<TreePoint> importGeoJson(@RequestBody TreeWrapper treeWrapper) {
 
         final var treeDocuments = treeWrapper.getFeatures().stream()
-                .filter(f -> f.getProperties().getBaumgruppe().equals("Ginko"))
+                .filter(f -> f.getProperties().getBaumgruppe().equals("Ginkgo"))
             .map(this::createTreePoint)
             .toList();
         return this.treePointRepository.saveAll(treeDocuments);
