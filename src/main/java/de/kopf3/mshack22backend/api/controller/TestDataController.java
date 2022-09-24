@@ -73,7 +73,7 @@ public class TestDataController {
         wastePointOpen.setUserId(userId);
 
         ActivityPoint wastePointResolved = new ActivityPoint();
-        wastePointResolved.setLocation(new Point( 7.6391023718815525, 51.952197878767734));
+        wastePointOpen.setLocation(new Point( 7.639907697185799, 51.95181490285337));
         wastePointResolved.setTitle("Hier liegt Müll!");
         wastePointResolved.setDescription("Immer das selbe an dieser Stelle...");
         wastePointResolved.setResolved(true);

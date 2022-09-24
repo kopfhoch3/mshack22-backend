@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import java.sql.Timestamp;
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
@@ -27,11 +26,8 @@ public class TreeController {
     @PostMapping("treeimport")
     public List<TreePoint> importGeoJson(@RequestBody TreeWrapper treeWrapper) {
 
-        final var trees = treeWrapper.getFeatures();
-        final var treeDocuments = IntStream.range(0, trees.size())
-                .filter(n -> n % 3 == 0)
-                .mapToObj(trees::get)
-                //.filter(f -> f.getProperties().getBaumgruppe().equals("Acer"))
+        final var treeDocuments = treeWrapper.getFeatures().stream()
+                .filter(f -> f.getProperties().getBaumgruppe().equals("Ginko"))
             .map(this::createTreePoint)
             .toList();
         return this.treePointRepository.saveAll(treeDocuments);
