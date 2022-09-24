@@ -84,6 +84,8 @@ public class TestDataController {
         wasteCare.setMessage("Ich hab aufgeräumt!");
         wasteCare.setType("wastecare");
         wasteCare.setTimestamp(new Date());
+        wasteCare.setUsersLiking(List.of(userId));
+        wasteCare.setUsersDisliking(Collections.emptyList());
         Image clean = new Image();
         clean.setPrimary(true);
         clean.setUrl("https://cdn.pixabay.com/photo/2020/11/03/21/09/grass-5710955_960_720.jpg");

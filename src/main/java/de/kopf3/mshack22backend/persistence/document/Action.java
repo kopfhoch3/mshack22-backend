@@ -17,6 +17,8 @@ public class Action {
 
     private String message;
     private List<Image> images;
+    private List<String> usersLiking;
+    private List<String> usersDisliking;
     private Date timestamp;
     private String type;
 }
