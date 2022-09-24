@@ -1,6 +1,7 @@
 package de.kopf3.mshack22backend.persistence.document;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -27,7 +28,7 @@ public class TreePoint {
     private GeoJsonPoint location;
     private String title;
     private String description;
-    private Timestamp timestamp;
+    private Date timestamp;
     private boolean resolved;
     private String treeFamily;
     private List<Image> images;
