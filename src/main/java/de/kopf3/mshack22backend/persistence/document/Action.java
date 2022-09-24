@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.sql.Timestamp;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -16,9 +17,9 @@ public class Action {
 
 
     private String message;
-    private List<Image> images;
-    private List<String> usersLiking;
-    private List<String> usersDisliking;
+    private List<Image> images = Collections.emptyList();
+    private List<String> usersLiking = Collections.emptyList();
+    private List<String> usersDisliking = Collections.emptyList();
     private Date timestamp;
     private String type;
 }

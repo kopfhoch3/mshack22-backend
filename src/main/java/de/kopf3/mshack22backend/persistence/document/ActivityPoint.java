@@ -2,6 +2,7 @@ package de.kopf3.mshack22backend.persistence.document;
 
 import java.sql.Timestamp;
 import java.time.ZonedDateTime;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -55,8 +56,8 @@ public class ActivityPoint {
     private String description;
     private Date timestamp;
     private boolean resolved;
-    private List<Action> actions;
-    private List<Image> images;
+    private List<Action> actions = Collections.emptyList();
+    private List<Image> images = Collections.emptyList();
     private String type;
 
     @JsonIgnore

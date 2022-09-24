@@ -7,6 +7,7 @@ import de.kopf3.mshack22backend.persistence.document.User;
 import de.kopf3.mshack22backend.persistence.repository.ActivityPointRepository;
 import de.kopf3.mshack22backend.persistence.repository.TreePointRepository;
 import de.kopf3.mshack22backend.persistence.repository.UserRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.geo.Point;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,10 +26,12 @@ public class TestDataController {
     private final TreePointRepository treePointRepository;
     private final UserRepository userRepository;
 
-    public TestDataController(ActivityPointRepository activityPointRepository, TreePointRepository treePointRepository, UserRepository userRepository) {
+    private final TreeController treeController;
+    public TestDataController(ActivityPointRepository activityPointRepository, TreePointRepository treePointRepository, UserRepository userRepository, TreeController treeController) {
         this.activityPointRepository = activityPointRepository;
         this.treePointRepository = treePointRepository;
         this.userRepository = userRepository;
+        this.treeController = treeController;
     }
 
     @PostMapping
@@ -42,7 +45,7 @@ public class TestDataController {
 
     private void insertActivityPoints(String userId) {
         ActivityPoint gift = new ActivityPoint();
-        gift.setLocation(new Point(51.95225897421028, 7.640386031636531));
+        gift.setLocation(new Point( 7.640386031636531, 51.95225897421028));
         gift.setTitle("Hier gibts Merge!");
         gift.setDescription("Echt coole Socken, Shirts und Hoodies!");
         gift.setResolved(false);
@@ -56,7 +59,7 @@ public class TestDataController {
         gift.setUserId(userId);
 
         ActivityPoint wastePointOpen = new ActivityPoint();
-        wastePointOpen.setLocation(new Point(51.95094901831947, 7.637933852966046));
+        wastePointOpen.setLocation(new Point( 7.637933852966046,51.95094901831947));
         wastePointOpen.setTitle("Hier liegt Müll!");
         wastePointOpen.setDescription("Immer das selbe an dieser Stelle...");
         wastePointOpen.setResolved(false);
@@ -70,7 +73,7 @@ public class TestDataController {
         wastePointOpen.setUserId(userId);
 
         ActivityPoint wastePointResolved = new ActivityPoint();
-        wastePointResolved.setLocation(new Point(51.952197878767734, 7.6391023718815525));
+        wastePointResolved.setLocation(new Point( 7.6391023718815525, 51.952197878767734));
         wastePointResolved.setTitle("Hier liegt Müll!");
         wastePointResolved.setDescription("Immer das selbe an dieser Stelle...");
         wastePointResolved.setResolved(true);
@@ -91,11 +94,26 @@ public class TestDataController {
         clean.setUrl("https://cdn.pixabay.com/photo/2020/11/03/21/09/grass-5710955_960_720.jpg");
         wasteCare.setImages(List.of(clean));
 
-        wastePointResolved.setActions(List.of(wasteCare));
-
         activityPointRepository.save(wastePointOpen);
         activityPointRepository.save(wastePointResolved);
         activityPointRepository.save(gift);
+
+        treeController.getByLocationAndRadius( 7.640352979019166,51.95227749530519, 100).stream().findFirst().ifPresent(
+                treePoint -> {
+                    Action giessen = new Action();
+                    giessen.setMessage("Treekeeper for life!");
+                    giessen.setUsersLiking(Collections.emptyList());
+                    giessen.setUsersDisliking(Collections.emptyList());
+                    giessen.setTimestamp(new Date());
+                    giessen.setImages(Collections.emptyList());
+                    treePoint.setActions(List.of(giessen));
+                    treePointRepository.save(treePoint);
+                }
+                                                                                                  );
+
+        wastePointResolved.setActions(List.of(wasteCare));
+
+
 
 
 

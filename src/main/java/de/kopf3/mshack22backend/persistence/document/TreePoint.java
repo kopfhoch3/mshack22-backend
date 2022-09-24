@@ -1,6 +1,7 @@
 package de.kopf3.mshack22backend.persistence.document;
 
 import java.sql.Timestamp;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -47,7 +48,6 @@ public class TreePoint {
     private Date timestamp;
     private boolean resolved;
     private String treeFamily;
-    private List<Image> images;
-    private List<Action> actions;
-    private List<GießAction> gießActions;
+    private List<Image> images = Collections.emptyList();
+    private List<Action> actions = Collections.emptyList();
 }

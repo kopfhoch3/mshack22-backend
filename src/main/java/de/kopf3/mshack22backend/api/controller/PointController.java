@@ -33,6 +33,10 @@ public class PointController {
     public ActivityPoint getById(@PathVariable String id){
         return pointRepository.findById(new ObjectId(id)).orElseThrow();
     }
+    @GetMapping()
+    public List<ActivityPoint> getAll(){
+        return pointRepository.findAll();
+    }
 
     /**
      *
